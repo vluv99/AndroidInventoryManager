@@ -1,4 +1,4 @@
-package com.company.InventoryManager
+package com.company.inventoryManager
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

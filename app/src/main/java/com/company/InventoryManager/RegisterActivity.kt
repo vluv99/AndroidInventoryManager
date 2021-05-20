@@ -1,4 +1,4 @@
-package com.company.InventoryManager
+package com.company.inventoryManager
 
 import android.content.Intent
 import android.content.SharedPreferences

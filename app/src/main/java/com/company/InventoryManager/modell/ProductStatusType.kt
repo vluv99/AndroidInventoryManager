@@ -1,4 +1,4 @@
-package com.company.InventoryManager.modell
+package com.company.inventoryManager.modell
 
 enum class ProductStatusType {
     created,

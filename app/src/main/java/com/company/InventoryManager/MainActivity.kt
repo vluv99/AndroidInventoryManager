@@ -1,4 +1,4 @@
-package com.company.InventoryManager
+package com.company.inventoryManager
 
 import android.content.Intent
 import android.content.SharedPreferences
@@ -89,7 +89,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onClick(v: View) {
         when (v.id) {
-            R.id.sign_in_button -> LoginWithGoogle(v);
+     //       R.id.sign_in_button -> LoginWithGoogle(v);
         }
     }
 
