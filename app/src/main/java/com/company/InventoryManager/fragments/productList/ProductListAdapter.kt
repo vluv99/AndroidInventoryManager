@@ -38,11 +38,11 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ViewHolder>()
             fun from(parent: ViewGroup): ViewHolder {
                 val layoutInflater = LayoutInflater.from(parent.context);
 
-                var binding = ListItemProductBinding.inflate(layoutInflater);
-                binding.root.layoutParams = ViewGroup.LayoutParams(
+                var binding = ListItemProductBinding.inflate(layoutInflater, parent, false);
+                /*binding.root.layoutParams = ViewGroup.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT,
                     ViewGroup.LayoutParams.WRAP_CONTENT
-                );
+                );*/
                 return ViewHolder(
                     binding
                 );

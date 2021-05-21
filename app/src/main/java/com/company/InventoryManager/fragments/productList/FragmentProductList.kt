@@ -25,8 +25,8 @@ class FragmentProductList : Fragment() {
         var productListAdapter = ProductListAdapter();
 
         binding.recycleView.adapter = productListAdapter;
-        productListAdapter.data = listOf(Product("1",null, "hello",false, false,
-            "name", null, null, null, null, null));
+        /*productListAdapter.data = listOf(Product("1",null, "hellooooooooooooooooooooooooooooooooooooo",false, false,
+            "name", null, null, null, null, null));*/
 
         return binding.root;
     }
