@@ -10,7 +10,7 @@ data class Product(
     var isCustomerVisible: Boolean,
     var name: String?,
     var orderDate: Date?,
-    var producterialNumber: String?,
+    var productSerialNumber: String?,
     var startDate: Date?,
     var terminationDate: Date?,
     var status: ProductStatusType?

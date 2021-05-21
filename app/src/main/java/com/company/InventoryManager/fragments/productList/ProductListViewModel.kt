@@ -5,12 +5,12 @@ import androidx.lifecycle.ViewModel
 import com.company.inventoryManager.modell.Product
 
 class ProductListViewModel : ViewModel() {
-    var products = mutableListOf<Product>();
-    val productsLivaData : MutableLiveData<MutableList<Product>> = MutableLiveData(mutableListOf());
+    //var products = mutableListOf<Product>();
+    val products : MutableLiveData<MutableList<Product>> = MutableLiveData(mutableListOf());
 
     init {
-        productsLivaData.value?.add(
+        products.value?.add(
             Product("1",null, "hellooooooooooooooooooooooooooooooooooooo",false, false,
-                "name", null, null, null, null, null))
+                "product name-y", null, null, null, null, null))
     }
 }

@@ -5,12 +5,16 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.company.inventoryManager.R
+import androidx.fragment.app.viewModels
+import androidx.lifecycle.Observer
 import com.company.inventoryManager.databinding.FragmentProductListBinding
-import com.company.inventoryManager.modell.Product
 
 // generated
 class FragmentProductList : Fragment() {
+
+    private val viewModel: ProductListViewModel by viewModels(); //handles lifecycle stuff
+    private lateinit var binding: FragmentProductListBinding;
+    private lateinit var productListAdapter: ProductListAdapter;
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,13 +25,27 @@ class FragmentProductList : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        var binding = FragmentProductListBinding.inflate(inflater, container, false);
-        var productListAdapter = ProductListAdapter();
+        binding = FragmentProductListBinding.inflate(inflater, container, false);
+        binding.lifecycleOwner = this;
+        productListAdapter = ProductListAdapter();
 
         binding.recycleView.adapter = productListAdapter;
-        /*productListAdapter.data = listOf(Product("1",null, "hellooooooooooooooooooooooooooooooooooooo",false, false,
-            "name", null, null, null, null, null));*/
 
         return binding.root;
+    }
+
+    override fun onActivityCreated(savedInstanceState: Bundle?) {
+        super.onActivityCreated(savedInstanceState)
+
+        // product list changes
+        viewModel.products?.let{
+            it.observe(this.viewLifecycleOwner, Observer { product ->
+                // Update the UI, in this case, a TextView.
+                productListAdapter.data = product;
+            })
+            it.value?.let {
+                productListAdapter.data = it;
+            }
+        }
     }
 }
