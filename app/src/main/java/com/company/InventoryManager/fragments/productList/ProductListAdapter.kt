@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.company.inventoryManager.databinding.ListItemProductBinding
 import com.company.inventoryManager.modell.Product
 
-class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
+class ProductListAdapter(val clickListener: ProductListener) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
     var data = listOf<Product>()
         set(value) {
             field = value
@@ -16,11 +16,12 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ViewHolder>()
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder.from(
             parent
-        );    }
+        );
+    }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         data.elementAt(position).let {
-            holder.bind(it, data.size)
+            holder.bind(it, data.size, clickListener)
         }
     }
 
@@ -29,9 +30,12 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ViewHolder>()
     }
 
     class ViewHolder(val binding: ListItemProductBinding) : RecyclerView.ViewHolder(binding.root) {
-        fun bind(it: Product, size: Int) {
-            binding.product = it;
+        fun bind(product: Product, size: Int, clickListener: ProductListener) {
+            binding.product = product;
             binding.executePendingBindings();
+            binding.root.setOnClickListener {
+                clickListener.onClick(product);
+            }
         }
 
         companion object {
@@ -39,10 +43,7 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ViewHolder>()
                 val layoutInflater = LayoutInflater.from(parent.context);
 
                 var binding = ListItemProductBinding.inflate(layoutInflater, parent, false);
-                /*binding.root.layoutParams = ViewGroup.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT,
-                    ViewGroup.LayoutParams.WRAP_CONTENT
-                );*/
+
                 return ViewHolder(
                     binding
                 );
@@ -50,5 +51,8 @@ class ProductListAdapter : RecyclerView.Adapter<ProductListAdapter.ViewHolder>()
         }
     }
 
+    class ProductListener(val clickListener: (name: String) -> Unit) {
+        fun onClick(product: Product) = product.id?.let { clickListener(it) }
+    }
 
 }

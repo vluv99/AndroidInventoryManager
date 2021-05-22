@@ -1,17 +1,19 @@
 package com.company.inventoryManager.modell
 
+import com.google.firebase.firestore.DocumentId
 import java.util.*
 
 data class Product(
-    val id: String,
-    var href: String?,
-    var description: String?,
-    var isBundle: Boolean,
-    var isCustomerVisible: Boolean,
-    var name: String?,
-    var orderDate: Date?,
-    var productSerialNumber: String?,
-    var startDate: Date?,
-    var terminationDate: Date?,
-    var status: ProductStatusType?
+    @DocumentId
+    val id: String? = null,
+    var href: String? = null,
+    var description: String? = null,
+    var isBundle: Boolean = false,
+    var isCustomerVisible: Boolean = false,
+    var name: String? = null,
+    var orderDate: Date? = null,
+    var productSerialNumber: String? = null,
+    var startDate: Date? = null,
+    var terminationDate: Date? = null,
+    var status: ProductStatusType? = null
 )

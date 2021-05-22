@@ -2,6 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable name="viewModel" type="com.company.inventoryManager.fragments.productAdd.ProductAddViewModel"/>
+    </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/frameLayout3"
     android:layout_width="match_parent"
@@ -49,8 +52,9 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="15"
+        android:hint="Serial number"
         android:inputType="textPersonName"
-        android:text="Serial number"
+        android:text="@={viewModel.productSerialNumber}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
@@ -62,24 +66,26 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="15"
+        android:hint="Href"
         android:inputType="textPersonName"
-        android:text="Href"
+        android:text="@={viewModel.href}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName" />
+        app:layout_constraintTop_toBottomOf="@+id/ProductName" />
 
     <EditText
-        android:id="@+id/editTextTextPersonName"
+        android:id="@+id/ProductName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="8dp"
         android:ems="15"
+        android:hint="Name"
         android:inputType="textPersonName"
-        android:text="Name"
+        android:text="@={viewModel.name}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2" />
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
@@ -123,6 +129,27 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName3" />
+
+    <Button
+        android:id="@+id/addProductButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="Add"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Add product"
+        android:textAppearance="@style/TextAppearance.AppCompat.Display1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

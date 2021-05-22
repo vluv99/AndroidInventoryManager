@@ -29,7 +29,10 @@ class FragmentProductList : Fragment() {
         // Inflate the layout for this fragment
         binding = FragmentProductListBinding.inflate(inflater, container, false);
         binding.lifecycleOwner = this;
-        productListAdapter = ProductListAdapter();
+        productListAdapter = ProductListAdapter(ProductListAdapter.ProductListener {
+            var navController = findNavController();
+            navController.navigate(FragmentProductListDirections.actionFragmentProductListToFragmentProductView(it))
+        });
 
         binding.recycleView.adapter = productListAdapter;
 
@@ -44,15 +47,15 @@ class FragmentProductList : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        // product list changes
-        viewModel.products.let{
-            it.observe(this.viewLifecycleOwner, Observer { product ->
-                // Update the UI, in this case, a TextView.
-                productListAdapter.data = product;
-            })
-            it.value?.let {
-                productListAdapter.data = it;
-            }
+        viewModel.products.observe(this.viewLifecycleOwner, Observer { product ->
+            // Update the UI, in this case, a TextView.
+            productListAdapter.data = product;
+        })
+
+        viewModel.products.value?.let {
+            productListAdapter.data = it;
         }
     }
+
+
 }
