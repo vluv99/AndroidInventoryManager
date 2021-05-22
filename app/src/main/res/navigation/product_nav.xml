@@ -19,5 +19,12 @@
         <action
             android:id="@+id/action_fragmentProductList_to_fragmentProductView"
             app:destination="@id/fragmentProductView" />
+        <action
+            android:id="@+id/action_fragmentProductList_to_fragmentAddProduct"
+            app:destination="@id/fragmentAddProduct" />
     </fragment>
+    <fragment
+        android:id="@+id/fragmentAddProduct"
+        android:name="com.company.inventoryManager.fragments.productAdd.FragmentAddProduct"
+        android:label="FragmentAddProduct" />
 </navigation>

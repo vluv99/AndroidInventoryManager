@@ -7,7 +7,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.company.inventoryManager.databinding.FragmentProductListBinding
+import com.company.inventoryManager.fragments.productAdd.FragmentAddProduct
 
 // generated
 class FragmentProductList : Fragment() {
@@ -31,6 +33,11 @@ class FragmentProductList : Fragment() {
 
         binding.recycleView.adapter = productListAdapter;
 
+        binding.addButton.setOnClickListener {
+            var navController = findNavController();
+            navController.navigate(FragmentProductListDirections.actionFragmentProductListToFragmentAddProduct())
+        }
+
         return binding.root;
     }
 
@@ -38,7 +45,7 @@ class FragmentProductList : Fragment() {
         super.onActivityCreated(savedInstanceState)
 
         // product list changes
-        viewModel.products?.let{
+        viewModel.products.let{
             it.observe(this.viewLifecycleOwner, Observer { product ->
                 // Update the UI, in this case, a TextView.
                 productListAdapter.data = product;
