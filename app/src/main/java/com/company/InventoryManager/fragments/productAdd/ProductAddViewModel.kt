@@ -10,7 +10,10 @@ import com.company.inventoryManager.database.IDatabase
 import com.company.inventoryManager.fragments.productView.ProductViewViewModel
 import com.company.inventoryManager.modell.Product
 import com.company.inventoryManager.modell.ProductStatusType
+import com.google.android.gms.tasks.OnCompleteListener
+import com.google.android.gms.tasks.SuccessContinuation
 import com.google.android.gms.tasks.Task
+import com.google.android.gms.tasks.Tasks
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.toObject
 import kotlinx.coroutines.launch
@@ -33,7 +36,7 @@ class ProductAddViewModel(val productId: String?) :ViewModel(){
     val productSerialNumber: MutableLiveData<String> = MutableLiveData();
     val status: MutableLiveData<ProductStatusType> = MutableLiveData();
 
-    fun submit(): Task<DocumentReference> {
+    fun submit(): Task<*> {
         var p = Product();
         p.name = name.value;
         p.href = href.value;
@@ -46,8 +49,13 @@ class ProductAddViewModel(val productId: String?) :ViewModel(){
         p.productSerialNumber = productSerialNumber.value;
         p.status = status.value;
 
-        var res = database.addNewProduct(p);
-        return res;
+        if (productId != null){
+            p.setProductId(productId);
+            return database.updateProductById(productId, p);
+        }else {
+            var res = database.addNewProduct(p);
+            return res;
+        }
     }
 
     init {
