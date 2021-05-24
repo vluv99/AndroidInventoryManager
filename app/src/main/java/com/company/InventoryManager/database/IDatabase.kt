@@ -11,4 +11,5 @@ interface IDatabase {
     fun getProductById(id: String): DocumentReference
     fun addNewProduct(p: Product): Task<DocumentReference>
     fun deleteProductById(id: String): Task<Void>
+    fun updateProductById(id: String, p: Product): Task<Void>
 }

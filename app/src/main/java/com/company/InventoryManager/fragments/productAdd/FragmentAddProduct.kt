@@ -19,7 +19,8 @@ import com.company.inventoryManager.fragments.productView.ProductViewViewModelFa
 
 class FragmentAddProduct : Fragment() {
 
-    private val viewModel: ProductAddViewModel by viewModels(); //handles lifecycle stuff
+    val args: FragmentAddProductArgs by navArgs()
+    private val viewModel: ProductAddViewModel by viewModels{ ProductAddViewModelFactory(args.productId) }; //handles lifecycle stuff
     lateinit var binding: FragmentAddProductBinding;
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,6 +56,7 @@ class FragmentAddProduct : Fragment() {
             };
         }
 
+        binding.lifecycleOwner = this;
         return binding.root;
     }
 

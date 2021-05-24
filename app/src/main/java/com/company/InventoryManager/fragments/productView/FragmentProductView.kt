@@ -40,6 +40,11 @@ class FragmentProductView : Fragment() {
             };
         }
 
+        binding.UpdateButton.setOnClickListener {
+            var navController = findNavController();
+            navController.navigate(FragmentProductViewDirections.actionFragmentProductViewToFragmentAddProduct(viewModel.productId));
+        }
+
         return binding.root;
     }
 

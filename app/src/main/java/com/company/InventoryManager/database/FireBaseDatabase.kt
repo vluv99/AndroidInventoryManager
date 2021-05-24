@@ -33,4 +33,9 @@ class FireBaseDatabase: IDatabase {
         return database.document(id).delete();
     }
 
+    override fun updateProductById(id: String, p: Product): Task<Void> {
+        var database = Firebase.firestore.collection("products");
+        return database.document(id).set(p);
+    }
+
 }

@@ -38,7 +38,7 @@ class FragmentProductList : Fragment() {
 
         binding.addButton.setOnClickListener {
             var navController = findNavController();
-            navController.navigate(FragmentProductListDirections.actionFragmentProductListToFragmentAddProduct())
+            navController.navigate(FragmentProductListDirections.actionFragmentProductListToFragmentAddProduct(null))
         }
 
         return binding.root;

@@ -3,16 +3,21 @@ package com.company.inventoryManager.fragments.productAdd
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewModelScope
 import com.company.inventoryManager.database.FireBaseDatabase
 import com.company.inventoryManager.database.IDatabase
+import com.company.inventoryManager.fragments.productView.ProductViewViewModel
 import com.company.inventoryManager.modell.Product
 import com.company.inventoryManager.modell.ProductStatusType
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.toObject
+import kotlinx.coroutines.launch
+import kotlinx.coroutines.tasks.await
 import java.util.*
 
-class ProductAddViewModel :ViewModel(){
+class ProductAddViewModel(val productId: String?) :ViewModel(){
     val TAG = "ProductAddModel";
 
     val database: IDatabase = FireBaseDatabase();
@@ -43,5 +48,34 @@ class ProductAddViewModel :ViewModel(){
 
         var res = database.addNewProduct(p);
         return res;
+    }
+
+    init {
+        //name.value = "asd";
+        if (productId != null){
+                database.getProductById(productId).get().addOnSuccessListener {
+                    var p: Product? = it?.toObject<Product>();
+
+                    if (p != null){
+                        name.value = p.name.toString();
+                        //name.postValue(p.name);
+                        href.value = p.href;
+                        description.value = p.description;
+                        isBundle.value = p.isBundle;
+                        isCustomerVisible.value = p.isCustomerVisible;
+                        orderDate.value = p.orderDate;
+                        startDate.value = p.startDate;
+                        terminationDate.value = p.terminationDate;
+                        productSerialNumber.value = p.productSerialNumber;
+                        status.value = p.status;
+                    }
+                };
+        }
+    }
+}
+
+class ProductAddViewModelFactory(val productId: String?): ViewModelProvider.Factory{
+    override fun <T : ViewModel?> create(modelClass: Class<T>): T {
+        return  ProductAddViewModel(productId) as T;
     }
 }

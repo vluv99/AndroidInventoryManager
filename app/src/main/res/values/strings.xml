@@ -35,6 +35,8 @@
     <string name="description">Description</string>
     <string name="bundle">Bundle:</string>
     <string name="order_date">Order Date:</string>
+    <string name="delete">Delete</string>
+    <string name="update">Update</string>
 
     <string-array name="status_array">
         <item>created</item>
