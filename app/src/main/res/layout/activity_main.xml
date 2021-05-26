@@ -32,7 +32,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/textView"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.2"
+        android:autofillHints="mail" />
 
     <EditText
         android:id="@+id/editTextPassword"
@@ -46,7 +47,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextEmail"
-        app:layout_constraintVertical_bias="0.063" />
+        app:layout_constraintVertical_bias="0.063"
+        android:autofillHints="password" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
@@ -71,7 +73,8 @@
             android:onClick="Login"
             android:text="@string/login"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp"
+            style="?android:attr/buttonBarButtonStyle" />
 
         <Button
             android:id="@+id/registerButton"
@@ -82,7 +85,8 @@
             android:onClick="Register"
             android:text="@string/register"
             tools:layout_editor_absoluteX="0dp"
-            tools:layout_editor_absoluteY="0dp" />
+            tools:layout_editor_absoluteY="0dp"
+            style="?android:attr/buttonBarButtonStyle" />
     </LinearLayout>
 
     <!--<com.google.android.gms.common.SignInButton

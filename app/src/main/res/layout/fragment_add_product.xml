@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="com.company.inventoryManager.util.Converter" />
         <variable name="viewModel" type="com.company.inventoryManager.fragments.productAdd.ProductAddViewModel"/>
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -17,12 +18,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="15"
-        android:hint="Termination date"
+        android:hint="@string/termination_date"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate2"
+        android:autofillHints="@string/termination_date" />
 
     <EditText
         android:id="@+id/editTextDate2"
@@ -30,19 +32,21 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="15"
-        android:hint="Start date"
+        android:hint="@string/start_date"
         android:inputType="date"
+        android:text="@={Converter.dateToString(viewModel.startDate)}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate"
+        android:autofillHints="@string/start_date" />
 
     <CheckBox
         android:id="@+id/checkBox2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Customer visible"
+        android:text="@string/customer_visible"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextMultiLine"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
@@ -52,13 +56,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="15"
-        android:hint="Serial number"
+        android:hint="@string/serial_number"
         android:inputType="textPersonName"
         android:text="@={viewModel.productSerialNumber}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextDate3" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextDate3"
+        android:autofillHints="@string/serial_number" />
 
     <EditText
         android:id="@+id/editTextTextPersonName2"
@@ -66,13 +71,14 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="15"
-        android:hint="Href"
+        android:hint="@string/href"
         android:inputType="textPersonName"
         android:text="@={viewModel.href}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ProductName" />
+        app:layout_constraintTop_toBottomOf="@+id/ProductName"
+        android:autofillHints="@string/href" />
 
     <EditText
         android:id="@+id/ProductName"
@@ -80,12 +86,13 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="15"
-        android:hint="Name"
+        android:hint="@string/name"
         android:inputType="textPersonName"
         android:text="@={viewModel.name}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        android:autofillHints="@string/name" />
 
     <EditText
         android:id="@+id/editTextTextMultiLine"
@@ -94,19 +101,20 @@
         android:layout_marginTop="8dp"
         android:ems="15"
         android:gravity="start|top"
-        android:hint="Description"
+        android:hint="@string/description"
         android:inputType="textMultiLine"
         android:text="@={viewModel.description}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2" />
+        app:layout_constraintTop_toBottomOf="@+id/editTextTextPersonName2"
+        android:autofillHints="@string/description" />
 
     <CheckBox
         android:id="@+id/checkBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:text="Bundle"
+        android:text="@string/bundle"
         app:layout_constraintStart_toStartOf="@+id/editTextTextMultiLine"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
@@ -116,11 +124,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:ems="15"
-        android:hint="Order date"
+        android:hint="@string/order_date"
         android:inputType="date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+        app:layout_constraintTop_toBottomOf="@+id/checkBox"
+        android:autofillHints="@string/order_date" />
 
     <Spinner
         android:id="@+id/spinner"
@@ -136,7 +145,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:text="Add"
+        android:text="@string/add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -146,7 +155,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:text="Add product"
+        android:text="@string/add_product"
         android:textAppearance="@style/TextAppearance.AppCompat.Display1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
