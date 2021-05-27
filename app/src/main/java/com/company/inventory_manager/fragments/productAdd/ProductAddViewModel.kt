@@ -1,24 +1,15 @@
-package com.company.inventoryManager.fragments.productAdd
+package com.company.inventory_manager.fragments.productAdd
 
-import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.viewModelScope
-import com.company.inventoryManager.database.FireBaseDatabase
-import com.company.inventoryManager.database.IDatabase
-import com.company.inventoryManager.fragments.productView.ProductViewViewModel
-import com.company.inventoryManager.modell.Product
-import com.company.inventoryManager.modell.ProductStatusType
-import com.google.android.gms.tasks.OnCompleteListener
-import com.google.android.gms.tasks.SuccessContinuation
+import com.company.inventory_manager.database.FireBaseDatabase
+import com.company.inventory_manager.database.IDatabase
+import com.company.inventory_manager.modell.Product
+import com.company.inventory_manager.modell.ProductStatusType
+import com.company.inventory_manager.util.Converter
 import com.google.android.gms.tasks.Task
-import com.google.android.gms.tasks.Tasks
-import com.google.firebase.firestore.DocumentReference
 import com.google.firebase.firestore.ktx.toObject
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.tasks.await
-import java.util.*
 
 class ProductAddViewModel(val productId: String?) :ViewModel(){
     val TAG = "ProductAddModel";
@@ -30,9 +21,9 @@ class ProductAddViewModel(val productId: String?) :ViewModel(){
     val description: MutableLiveData<String> = MutableLiveData();
     val isBundle: MutableLiveData<Boolean> = MutableLiveData();
     val isCustomerVisible: MutableLiveData<Boolean> = MutableLiveData();
-    val orderDate: MutableLiveData<Date> = MutableLiveData();
-    val startDate: MutableLiveData<Date> = MutableLiveData();
-    val terminationDate: MutableLiveData<Date> = MutableLiveData();
+    val orderDate: MutableLiveData<String> = MutableLiveData();
+    val startDate: MutableLiveData<String> = MutableLiveData();
+    val terminationDate: MutableLiveData<String> = MutableLiveData();
     val productSerialNumber: MutableLiveData<String> = MutableLiveData();
     val status: MutableLiveData<ProductStatusType> = MutableLiveData();
 
@@ -43,9 +34,11 @@ class ProductAddViewModel(val productId: String?) :ViewModel(){
         p.description = description.value;
         p.isBundle = isBundle.value ?:false;
         p.isCustomerVisible = isCustomerVisible.value ?:false;
-        p.orderDate = orderDate.value;
-        p.startDate = startDate.value;
-        p.terminationDate = terminationDate.value;
+
+        p.orderDate = Converter.stringToDate(orderDate.value);
+        p.startDate = Converter.stringToDate(startDate.value);
+        p.terminationDate = Converter.stringToDate(terminationDate.value);
+
         p.productSerialNumber = productSerialNumber.value;
         p.status = status.value;
 
@@ -71,9 +64,9 @@ class ProductAddViewModel(val productId: String?) :ViewModel(){
                         description.value = p.description;
                         isBundle.value = p.isBundle;
                         isCustomerVisible.value = p.isCustomerVisible;
-                        orderDate.value = p.orderDate;
-                        startDate.value = p.startDate;
-                        terminationDate.value = p.terminationDate;
+                        orderDate.value = Converter.dateToString(p.orderDate);
+                        startDate.value = Converter.dateToString(p.startDate);
+                        terminationDate.value = Converter.dateToString(p.terminationDate);
                         productSerialNumber.value = p.productSerialNumber;
                         status.value = p.status;
                     }

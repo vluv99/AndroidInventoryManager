@@ -1,6 +1,6 @@
-package com.company.inventoryManager.database
+package com.company.inventory_manager.database
 
-import com.company.inventoryManager.modell.Product
+import com.company.inventory_manager.modell.Product
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.CollectionReference
 import com.google.firebase.firestore.DocumentReference

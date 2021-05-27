@@ -1,4 +1,4 @@
-package com.company.inventoryManager.fragments.productList
+package com.company.inventory_manager.fragments.productList
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,8 +8,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.company.inventoryManager.databinding.FragmentProductListBinding
-import com.company.inventoryManager.fragments.productAdd.FragmentAddProduct
+import com.company.inventory_manager.databinding.FragmentProductListBinding
+import com.company.inventory_manager.fragments.productAdd.FragmentAddProduct
 
 // generated
 class FragmentProductList : Fragment() {

@@ -1,10 +1,10 @@
-package com.company.inventoryManager.fragments.productList
+package com.company.inventory_manager.fragments.productList
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.company.inventoryManager.databinding.ListItemProductBinding
-import com.company.inventoryManager.modell.Product
+import com.company.inventory_manager.databinding.ListItemProductBinding
+import com.company.inventory_manager.modell.Product
 
 class ProductListAdapter(val clickListener: ProductListener) : RecyclerView.Adapter<ProductListAdapter.ViewHolder>() {
     var data = listOf<Product>()

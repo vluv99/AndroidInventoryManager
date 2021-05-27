@@ -1,4 +1,4 @@
-package com.company.inventoryManager.modell
+package com.company.inventory_manager.modell
 
 import com.google.firebase.firestore.DocumentId
 import java.util.*

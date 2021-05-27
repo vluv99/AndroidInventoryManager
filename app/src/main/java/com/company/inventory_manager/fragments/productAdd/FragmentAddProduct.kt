@@ -1,21 +1,19 @@
-package com.company.inventoryManager.fragments.productAdd
+package com.company.inventory_manager.fragments.productAdd
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
-import com.company.inventoryManager.R
-import com.company.inventoryManager.databinding.FragmentAddProductBinding
-import com.company.inventoryManager.fragments.productList.FragmentProductListDirections
-import com.company.inventoryManager.fragments.productView.FragmentProductViewArgs
-import com.company.inventoryManager.fragments.productView.ProductViewViewModel
-import com.company.inventoryManager.fragments.productView.ProductViewViewModelFactory
+import com.company.inventory_manager.R
+import com.company.inventory_manager.databinding.FragmentAddProductBinding
+
 
 class FragmentAddProduct : Fragment() {
 
@@ -25,6 +23,9 @@ class FragmentAddProduct : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        activity?.getWindow()
+            ?.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN or WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
     }
 
     override fun onCreateView(

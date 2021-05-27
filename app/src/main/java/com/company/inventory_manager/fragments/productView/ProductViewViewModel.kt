@@ -1,12 +1,12 @@
-package com.company.inventoryManager.fragments.productView
+package com.company.inventory_manager.fragments.productView
 
 import android.util.Log
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
-import com.company.inventoryManager.database.FireBaseDatabase
-import com.company.inventoryManager.database.IDatabase
-import com.company.inventoryManager.modell.Product
+import com.company.inventory_manager.database.FireBaseDatabase
+import com.company.inventory_manager.database.IDatabase
+import com.company.inventory_manager.modell.Product
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.ktx.toObject
 
