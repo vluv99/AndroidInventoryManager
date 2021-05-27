@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.company.inventoryManager">
+    package="com.company.inventory_manager">
 
     <!--<uses-permission android:name="android.permission.WAKE_LOCK" />-->
 
@@ -12,8 +12,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.InventoryManagement">
         <activity
-            android:name="com.company.inventoryManager.InventoryActivity"
-            android:label="@string/title_activity_inventory">
+            android:name="com.company.inventory_manager.InventoryActivity"
+            android:label="@string/title_activity_inventory"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,12 +23,12 @@
         </activity>
 
         <activity
-            android:name="com.company.inventoryManager.RegisterActivity"
+            android:name="com.company.inventory_manager.RegisterActivity"
             android:label="@string/title_activity_register"
             android:theme="@style/Theme.InventoryManagement.NoActionBar"
             />
 
-        <activity android:name="com.company.inventoryManager.MainActivity">
+        <activity android:name="com.company.inventory_manager.MainActivity">
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,3 +38,5 @@
     </application>
 
 </manifest>
+
+<!--android:windowSoftInputMode="adjustResize"-->

@@ -1,8 +1,9 @@
-package com.company.inventoryManager
+package com.company.inventory_manager
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.findNavController
+import com.company.inventory_manager.R
 
 class InventoryActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

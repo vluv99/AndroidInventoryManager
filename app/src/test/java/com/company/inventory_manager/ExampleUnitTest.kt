@@ -1,4 +1,4 @@
-package com.company.inventoryManager
+package com.company.inventory_manager
 
 import org.junit.Test
 

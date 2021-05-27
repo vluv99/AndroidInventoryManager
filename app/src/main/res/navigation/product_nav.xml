@@ -6,7 +6,7 @@
 
     <fragment
         android:id="@+id/fragmentProductView"
-        android:name="com.company.inventoryManager.fragments.productView.FragmentProductView"
+        android:name="com.company.inventory_manager.fragments.productView.FragmentProductView"
         android:label="FragmentProductView" >
         <argument
             android:name="productID"
@@ -17,7 +17,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentProductList"
-        android:name="com.company.inventoryManager.fragments.productList.FragmentProductList"
+        android:name="com.company.inventory_manager.fragments.productList.FragmentProductList"
         android:label="FragmentProductList" >
         <action
             android:id="@+id/action_fragmentProductList_to_fragmentProductView"
@@ -28,7 +28,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentAddProduct"
-        android:name="com.company.inventoryManager.fragments.productAdd.FragmentAddProduct"
+        android:name="com.company.inventory_manager.fragments.productAdd.FragmentAddProduct"
         android:label="FragmentAddProduct" >
         <action
             android:id="@+id/action_fragmentAddProduct_to_fragmentProductList"

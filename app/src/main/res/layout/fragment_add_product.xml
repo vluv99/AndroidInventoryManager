@@ -3,8 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
-        <import type="com.company.inventoryManager.util.Converter" />
-        <variable name="viewModel" type="com.company.inventoryManager.fragments.productAdd.ProductAddViewModel"/>
+        <!--<import type="com.company.inventory_manager.util.Converter" />-->
+        <variable name="viewModel" type="com.company.inventory_manager.fragments.productAdd.ProductAddViewModel"/>
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
     android:id="@+id/frameLayout3"
@@ -20,6 +20,7 @@
         android:ems="15"
         android:hint="@string/termination_date"
         android:inputType="date"
+        android:text="@={viewModel.terminationDate}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
@@ -34,7 +35,7 @@
         android:ems="15"
         android:hint="@string/start_date"
         android:inputType="date"
-        android:text="@={Converter.dateToString(viewModel.startDate)}"
+        android:text="@={viewModel.startDate}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent"
@@ -47,6 +48,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/customer_visible"
+        android:checked="@={viewModel.isCustomerVisible}"
         app:layout_constraintEnd_toEndOf="@+id/editTextTextMultiLine"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
@@ -115,6 +117,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:text="@string/bundle"
+        android:checked="@={viewModel.isBundle}"
         app:layout_constraintStart_toStartOf="@+id/editTextTextMultiLine"
         app:layout_constraintTop_toBottomOf="@+id/editTextTextMultiLine" />
 
@@ -126,6 +129,7 @@
         android:ems="15"
         android:hint="@string/order_date"
         android:inputType="date"
+        android:text="@={viewModel.orderDate}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/checkBox"
