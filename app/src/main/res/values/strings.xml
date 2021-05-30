@@ -1,18 +1,16 @@
 <resources>
     <string name="app_name">InventoryManagement</string>
     <string name="login">Login</string>
+
     <string name="mail">Email</string>
+    <string name="username">Username</string>
     <string name="password">Password</string>
+    <string name="password_again">Password Again</string>
+
     <string name="register">Register</string>
     <string name="title_activity_register">RegisterActivity</string>
-    <!-- Strings used for fragments for navigation -->
-    <string name="first_fragment_label">First Fragment</string>
-    <string name="second_fragment_label">Second Fragment</string>
-    <string name="next">Next</string>
-    <string name="previous">Previous</string>
 
-    <string name="username">Username</string>
-    <string name="password_again">Password Again</string>
+
     <string name="cancel">Cancel</string>
     <string name="male">Male</string>
     <string name="female">Female</string>
@@ -22,6 +20,7 @@
     This string is used for square devices and overridden by hello_world in
     values-round/strings.xml for round devices.
     -->
+
     <string name="termination_date">Termination Date:</string>
     <string name="status">Status</string>
     <string name="start_date">Start Date:</string>
@@ -50,4 +49,9 @@
         <item>suspended</item>
         <item>aborted</item>
     </string-array>
+
+
+    <string name="sort_date">Sort by Date</string>
+    <string name="sort_active">Show only active</string>
+    <string name="none">None</string>
 </resources>

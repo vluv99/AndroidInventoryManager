@@ -20,4 +20,12 @@ data class Product(
     fun setProductId(id: String){
         this.id = id;
     }
+
+    fun validate():Boolean{
+        if(name.isNullOrEmpty() ||
+                status == null){
+            return false
+        }
+        return true
+    }
 }

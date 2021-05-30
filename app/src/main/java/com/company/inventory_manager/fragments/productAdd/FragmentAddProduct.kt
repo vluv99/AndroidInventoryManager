@@ -50,6 +50,9 @@ class FragmentAddProduct : Fragment() {
         }
 
         binding.addProductButton.setOnClickListener {
+            if(!viewModel.validate())
+                return@setOnClickListener;
+
             viewModel.submit().addOnSuccessListener {
                 var navController = findNavController();
                 navController.popBackStack()

@@ -13,7 +13,11 @@
             app:argType="string" />
         <action
             android:id="@+id/action_fragmentProductView_to_fragmentAddProduct"
-            app:destination="@id/fragmentAddProduct" />
+            app:destination="@id/fragmentAddProduct"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
     </fragment>
     <fragment
         android:id="@+id/fragmentProductList"
@@ -21,18 +25,23 @@
         android:label="FragmentProductList" >
         <action
             android:id="@+id/action_fragmentProductList_to_fragmentProductView"
-            app:destination="@id/fragmentProductView" />
+            app:destination="@id/fragmentProductView"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out"/>
         <action
             android:id="@+id/action_fragmentProductList_to_fragmentAddProduct"
-            app:destination="@id/fragmentAddProduct" />
+            app:destination="@id/fragmentAddProduct"
+            app:enterAnim="@anim/slide_in"
+            app:exitAnim="@anim/slide_out"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_out" />
     </fragment>
     <fragment
         android:id="@+id/fragmentAddProduct"
         android:name="com.company.inventory_manager.fragments.productAdd.FragmentAddProduct"
         android:label="FragmentAddProduct" >
-        <action
-            android:id="@+id/action_fragmentAddProduct_to_fragmentProductList"
-            app:destination="@id/fragmentProductList" />
         <argument
             android:name="productId"
             app:argType="string"

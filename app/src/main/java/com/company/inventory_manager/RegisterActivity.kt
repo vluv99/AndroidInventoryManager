@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
-import com.company.inventory_manager.R
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
@@ -37,7 +36,7 @@ class RegisterActivity : AppCompatActivity() {
         userEmailEditText = findViewById(R.id.userEmailEditText);
         passwordEditText = findViewById(R.id.passwordEditText);
         passwordAgainEditText = findViewById(R.id.passwordAgainEditText);
-        radioGroup = findViewById(R.id.accountTypeGroup);
+        radioGroup = findViewById(R.id.sortingSetting);
         radioGroup?.check(R.id.customerRadioButton);
 
         var secret_key:Int = intent.getIntExtra("SECRET_KEY", 0);
@@ -47,10 +46,10 @@ class RegisterActivity : AppCompatActivity() {
         }
 
         preferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
-        var username: String? = preferences?.getString("username", "");
+        var email: String? = preferences?.getString("email", "");
         var password: String? = preferences?.getString("password", "");
 
-        usernameEditText?.setText(username);
+        userEmailEditText?.setText(email);
         passwordEditText?.setText(password);
         passwordAgainEditText?.setText(password);
 
@@ -104,7 +103,9 @@ class RegisterActivity : AppCompatActivity() {
 
     fun startSession(){
         var intent: Intent = Intent(this, InventoryActivity::class.java);
-        //intent.putExtra("SECRET_KEY", SECRET_KEY);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         startActivity(intent);
     }
 }

@@ -7,8 +7,12 @@ import com.company.inventory_manager.database.FireBaseDatabase
 import com.company.inventory_manager.database.IDatabase
 import com.company.inventory_manager.modell.Product
 import com.company.inventory_manager.modell.ProductStatusType
-import com.company.inventory_manager.util.Converter
+import com.company.inventory_manager.util.dateToString
+import com.company.inventory_manager.util.stringToDate
+import com.google.android.gms.common.api.internal.TaskUtil
+//import com.company.inventory_manager.util.BindingUtils
 import com.google.android.gms.tasks.Task
+import com.google.android.play.core.tasks.Tasks
 import com.google.firebase.firestore.ktx.toObject
 
 class ProductAddViewModel(val productId: String?) :ViewModel(){
@@ -27,20 +31,13 @@ class ProductAddViewModel(val productId: String?) :ViewModel(){
     val productSerialNumber: MutableLiveData<String> = MutableLiveData();
     val status: MutableLiveData<ProductStatusType> = MutableLiveData();
 
+    fun validate():Boolean{
+        val p = getProduct();
+        return p.validate();
+    }
+
     fun submit(): Task<*> {
-        var p = Product();
-        p.name = name.value;
-        p.href = href.value;
-        p.description = description.value;
-        p.isBundle = isBundle.value ?:false;
-        p.isCustomerVisible = isCustomerVisible.value ?:false;
-
-        p.orderDate = Converter.stringToDate(orderDate.value);
-        p.startDate = Converter.stringToDate(startDate.value);
-        p.terminationDate = Converter.stringToDate(terminationDate.value);
-
-        p.productSerialNumber = productSerialNumber.value;
-        p.status = status.value;
+        var p = getProduct()
 
         if (productId != null){
             p.setProductId(productId);
@@ -49,6 +46,23 @@ class ProductAddViewModel(val productId: String?) :ViewModel(){
             var res = database.addNewProduct(p);
             return res;
         }
+    }
+
+    private fun getProduct(): Product {
+        var p = Product();
+        p.name = name.value;
+        p.href = href.value;
+        p.description = description.value;
+        p.isBundle = isBundle.value ?: false;
+        p.isCustomerVisible = isCustomerVisible.value ?: false;
+
+        p.orderDate = stringToDate(orderDate.value);
+        p.startDate = stringToDate(startDate.value);
+        p.terminationDate = stringToDate(terminationDate.value);
+
+        p.productSerialNumber = productSerialNumber.value;
+        p.status = status.value;
+        return p
     }
 
     init {
@@ -64,9 +78,9 @@ class ProductAddViewModel(val productId: String?) :ViewModel(){
                         description.value = p.description;
                         isBundle.value = p.isBundle;
                         isCustomerVisible.value = p.isCustomerVisible;
-                        orderDate.value = Converter.dateToString(p.orderDate);
-                        startDate.value = Converter.dateToString(p.startDate);
-                        terminationDate.value = Converter.dateToString(p.terminationDate);
+                        orderDate.value = dateToString(p.orderDate);
+                        startDate.value = dateToString(p.startDate);
+                        terminationDate.value = dateToString(p.terminationDate);
                         productSerialNumber.value = p.productSerialNumber;
                         status.value = p.status;
                     }

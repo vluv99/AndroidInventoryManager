@@ -138,7 +138,7 @@
             android:maxLines="3"/>-->
 
         <RadioGroup
-            android:id="@+id/accountTypeGroup"
+            android:id="@+id/sortingSetting"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/default_margin"
@@ -168,7 +168,7 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal"
             android:layout_marginTop="@dimen/default_margin"
-            android:layout_below="@+id/accountTypeGroup"
+            android:layout_below="@+id/sortingSetting"
             android:layout_centerHorizontal="true">
 
             <Button

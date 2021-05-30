@@ -4,9 +4,13 @@
     xmlns:tools="http://schemas.android.com/tools">
     <data>
 
-        <import type="com.company.inventory_manager.util.Converter" />
+        <import type="com.company.inventory_manager.util.BindingUtils" />
         <variable name="viewModel" type="com.company.inventory_manager.fragments.productView.ProductViewViewModel"/>
     </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/frameLayout2"
@@ -30,7 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{Converter.statusToString(viewModel.product.status)}"
+            android:text="@{BindingUtils.statusToString(viewModel.product.status)}"
             app:layout_constraintStart_toStartOf="@+id/TermianationDateData"
             app:layout_constraintTop_toBottomOf="@+id/TermianationDateData"
             tools:text="active" />
@@ -51,7 +55,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{Converter.dateToString(viewModel.product.terminationDate)}"
+            android:text="@{BindingUtils.dateToString(viewModel.product.terminationDate)}"
             app:layout_constraintStart_toStartOf="@+id/startDateData"
             app:layout_constraintTop_toBottomOf="@+id/startDateData"
             tools:text="2021.07.21." />
@@ -61,7 +65,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{Converter.dateToString(viewModel.product.startDate)}"
+            android:text="@{BindingUtils.dateToString(viewModel.product.startDate)}"
             app:layout_constraintStart_toStartOf="@+id/serialNoData"
             app:layout_constraintTop_toBottomOf="@+id/serialNoData"
             tools:text="2021.05.23." />
@@ -153,7 +157,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{Converter.boolToString(viewModel.product.bundle) }"
+            android:text="@{BindingUtils.boolToString(viewModel.product.bundle) }"
             app:layout_constraintStart_toStartOf="@+id/customerVData"
             app:layout_constraintTop_toBottomOf="@+id/customerVData"
             tools:text="No" />
@@ -164,7 +168,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="16dp"
-            android:text="@{Converter.boolToString(viewModel.product.isCustomerVisible) }"
+            android:text="@{BindingUtils.boolToString(viewModel.product.isCustomerVisible) }"
             app:layout_constraintStart_toEndOf="@+id/textView14"
             app:layout_constraintTop_toBottomOf="@+id/descriptionData"
             tools:text="Yes" />
@@ -174,7 +178,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
-            android:text="@{Converter.dateToString(viewModel.product.orderDate)}"
+            android:text="@{BindingUtils.dateToString(viewModel.product.orderDate)}"
             app:layout_constraintStart_toStartOf="@+id/bundleData"
             app:layout_constraintTop_toBottomOf="@+id/bundleData"
             tools:text="2021.05.21." />
@@ -220,7 +224,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/UpdateButton"
             app:layout_constraintHorizontal_bias="0.5"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView20" />
 
         <Button
             android:id="@+id/UpdateButton"
@@ -233,4 +238,5 @@
             app:layout_constraintStart_toEndOf="@+id/deleteButton" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
 </layout>

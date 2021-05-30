@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
     <data>
+        <import type="com.company.inventory_manager.util.BindingUtils" />
        <variable name="product" type="com.company.inventory_manager.modell.Product"/>
     </data>
 <androidx.constraintlayout.widget.ConstraintLayout
@@ -42,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:layout_marginEnd="24dp"
-        android:text="Im an enum here"
+        android:text="@{BindingUtils.statusToString(product.status)}"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="discontinued" />

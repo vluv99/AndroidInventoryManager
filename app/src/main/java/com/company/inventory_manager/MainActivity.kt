@@ -8,7 +8,7 @@ import android.view.View
 import android.widget.EditText
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import com.company.inventory_manager.R
+import androidx.core.content.edit
 import com.google.android.gms.auth.api.signin.GoogleSignIn
 import com.google.android.gms.auth.api.signin.GoogleSignInAccount
 import com.google.android.gms.auth.api.signin.GoogleSignInClient
@@ -22,7 +22,7 @@ import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
 
 
-class MainActivity : AppCompatActivity(), View.OnClickListener {
+class MainActivity : AppCompatActivity() {
     private var LOG_TAG: String? = MainActivity::class.qualifiedName;
     private var PREF_KEY: String? = MainActivity::class.java.`package`.toString();
     private var RC_SIGN_IN: Int = 123;
@@ -84,18 +84,27 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     fun Register(view: View) {
         var intent: Intent = Intent(this, RegisterActivity::class.java);
         intent.putExtra("SECRET_KEY", SECRET_KEY);
+
+        preferences = getSharedPreferences(PREF_KEY, MODE_PRIVATE);
+        preferences?.edit {
+            this.putString("password",password?.text?.toString())
+            this.putString("email",mail?.text?.toString())
+        }
+        //var password: String? = preferences?.getString("password", "");
+
         //TODO
         startActivity(intent);
     }
 
-    override fun onClick(v: View) {
-        when (v.id) {
-     //       R.id.sign_in_button -> LoginWithGoogle(v);
-        }
-    }
 
+    /**
+     * Opens the main app content after a successful login
+     */
     fun startSession(){
         var intent: Intent = Intent(this, InventoryActivity::class.java);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION)
         //intent.putExtra("SECRET_KEY", SECRET_KEY);
         startActivity(intent);
     }
