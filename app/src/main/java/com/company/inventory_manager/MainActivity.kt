@@ -44,6 +44,10 @@ class MainActivity : AppCompatActivity() {
 
         mAuth = Firebase.auth;
 
+        if (mAuth?.currentUser != null){
+            startSession();
+        }
+
         var gso: GoogleSignInOptions =
             GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(getString(R.string.default_web_client_id)).requestEmail().build();

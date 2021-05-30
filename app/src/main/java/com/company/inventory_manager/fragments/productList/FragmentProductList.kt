@@ -1,23 +1,27 @@
 package com.company.inventory_manager.fragments.productList
 
+import android.Manifest
 import android.content.Intent
+import android.content.pm.PackageManager
+import android.net.Uri
 import android.os.Bundle
 import android.view.*
-import android.widget.RadioButton
+import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.company.inventory_manager.InventoryActivity
 import com.company.inventory_manager.MainActivity
 import com.company.inventory_manager.R
 import com.company.inventory_manager.databinding.FragmentProductListBinding
-import com.company.inventory_manager.fragments.productAdd.FragmentAddProduct
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
+
 
 // generated
 class FragmentProductList : Fragment() {
+
+    private val REQUEST_CODE_ASK_PERMISSIONS = 123;
 
     private val viewModel: ProductListViewModel by viewModels(); //handles lifecycle stuff
     private lateinit var binding: FragmentProductListBinding;
@@ -31,7 +35,7 @@ class FragmentProductList : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         // Inflate the layout for this fragment
         binding = FragmentProductListBinding.inflate(inflater, container, false);
         binding.lifecycleOwner = this;
@@ -59,6 +63,10 @@ class FragmentProductList : Fragment() {
                 viewModel.showAll();
             }
 
+        }
+
+        binding.cameraButton.setOnClickListener {
+            takePicture();
         }
 
         return binding.root;
@@ -94,6 +102,45 @@ class FragmentProductList : Fragment() {
                 true
             }
             else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    fun takePicture(){
+        if (checkUserPermission()) {
+            try {
+                val intent = Intent("com.google.zxing.client.android.SCAN")
+                intent.putExtra("SCAN_MODE", "QR_CODE_MODE") // "PRODUCT_MODE for bar codes
+                startActivityForResult(intent, 0)
+            } catch (e: Exception) {
+                val marketUri: Uri = Uri.parse("market://details?id=com.google.zxing.client.android")
+                val marketIntent = Intent(Intent.ACTION_VIEW, marketUri)
+                startActivity(marketIntent)
+            }
+        }
+    }
+
+    fun checkUserPermission(): Boolean {
+        if (ActivityCompat.checkSelfPermission(this.requireContext(), Manifest.permission.WRITE_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+            requestPermissions(
+                arrayOf(Manifest.permission.WRITE_EXTERNAL_STORAGE),
+                REQUEST_CODE_ASK_PERMISSIONS
+            )
+            return false;
+        }
+
+        return true;
+    }
+
+    override fun onRequestPermissionsResult(requestCode: Int, permissions: Array<String>, grantResults: IntArray) {
+        //super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+
+        when (requestCode) {
+            REQUEST_CODE_ASK_PERMISSIONS -> if (grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                //
+            } else {
+                Toast.makeText(this.requireContext(), "Permission denied!", Toast.LENGTH_SHORT).show()
+            }
+            else -> super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         }
     }
 

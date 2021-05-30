@@ -43,6 +43,7 @@
                 android:id="@+id/noneRadio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:checked="true"
                 android:text="@string/none" />
         </RadioGroup>
 
@@ -74,6 +75,15 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:srcCompat="@android:drawable/ic_input_add" />
 
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/cameraButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:clickable="true"
+            app:layout_constraintBottom_toTopOf="@+id/addButton"
+            app:layout_constraintEnd_toEndOf="@+id/addButton"
+            app:srcCompat="@android:drawable/ic_menu_camera" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

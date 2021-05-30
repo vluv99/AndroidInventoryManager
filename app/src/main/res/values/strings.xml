@@ -54,4 +54,7 @@
     <string name="sort_date">Sort by Date</string>
     <string name="sort_active">Show only active</string>
     <string name="none">None</string>
+    <string name="termination_date_2021_05_25">Termination Date: 2022.05.25.</string>
+    <string name="start_date_2021_05_21">Start Date: 2021.05.21.</string>
+    <string name="order_date_2021_05_25">Order Date: 2021.05.25.</string>
 </resources>
